@@ -211,3 +211,5 @@ INCLUDE_MUX = y
 
 # ENABLE_ASAN - enable address sanitizer
 ENABLE_ASAN ?= n
+
+DOCKER_BUILDER_USER_MOUNT = $(shell pwd)/target/docker-share/$(BLDENV):/var/lib/docker

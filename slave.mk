@@ -721,6 +721,8 @@ $(SONIC_INSTALL_WHEELS) : $(PYTHON_WHEELS_PATH)/%-install : .platform $$(addsuff
 
 # start docker daemon
 docker-start :
+	@if [ -d /var/lib/docker ] && stat -f /var/lib/docker | grep "Type.*ext" &> /dev/null; then \
+	     sudo sed -i 's/storage-driver=vfs/storage-driver=overlay2/g' /etc/default/docker; fi
 	@sudo sed -i '/http_proxy/d' /etc/default/docker
 	@sudo bash -c "{ echo \"export http_proxy=$$http_proxy\"; \
 	            echo \"export no_proxy=$$no_proxy\"; } >> /etc/default/docker"
