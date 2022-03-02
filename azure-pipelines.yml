@@ -43,8 +43,4 @@ stages:
     parameters:
       buildOptions: 'USERNAME=admin SONIC_BUILD_JOBS=$(nproc) ${{ variables.VERSION_CONTROL_OPTIONS }}'
       jobGroups:
-      - name: vs
-      - name: broadcom
-        variables:
-          swi_image: yes
-      - name: mellanox
+      - name: broadcom        
