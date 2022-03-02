@@ -28,7 +28,7 @@ resources:
   repositories:
   - repository: sonic-mgmt
     type: github
-    name: Azure/sonic-mgmt
+    name: sudarsesh/sonic-mgmt
     endpoint: build
 
 stages:
