@@ -184,6 +184,11 @@ ifneq ($(SONIC_DPKG_CACHE_SOURCE),)
 	DOCKER_RUN += -v "$(SONIC_DPKG_CACHE_SOURCE):/dpkg_cache:rw"
 endif
 
+ifneq ($(SONIC_DPKG_LOCAL_CACHE_DIR),)
+       DOCKER_RUN += -v "$(SONIC_DPKG_LOCAL_CACHE_DIR):/var/sonic/cache:rw"
+       SONIC_DPKG_LOCAL_CACHE_DIR=/var/sonic/cache
+endif
+
 ifeq ($(SONIC_CONFIG_USE_NATIVE_DOCKERD_FOR_BUILD), y)
 ifneq ($(MULTIARCH_QEMU_ENVIRON), y)
     DOCKER_RUN += -v /var/run/docker.sock:/var/run/docker.sock
@@ -280,6 +285,7 @@ SONIC_BUILD_INSTRUCTION :=  make \
                            KERNEL_PROCURE_METHOD=$(KERNEL_PROCURE_METHOD) \
                            SONIC_DPKG_CACHE_METHOD=$(SONIC_DPKG_CACHE_METHOD) \
                            SONIC_DPKG_CACHE_SOURCE=$(SONIC_DPKG_CACHE_SOURCE) \
+                           SONIC_DPKG_LOCAL_CACHE_DIR=$(SONIC_DPKG_LOCAL_CACHE_DIR) \
                            HTTP_PROXY=$(http_proxy) \
                            HTTPS_PROXY=$(https_proxy) \
                            NO_PROXY=$(no_proxy) \
