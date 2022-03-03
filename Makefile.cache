@@ -108,9 +108,7 @@ endif
 SONIC_DPKG_CACHE_DIR    := /dpkg_cache
 MOD_CACHE_LOCK_SUFFIX   := cache_access
 MOD_CACHE_LOCK_TIMEOUT  := 3600
-ifeq ($(SONIC_DPKG_LOCAL_CACHE_DIR),)
 SONIC_DPKG_LOCAL_CACHE_DIR=${TARGET_PATH}/cache
-endif
 $(shell test -d $(SONIC_DPKG_LOCAL_CACHE_DIR) || \
     mkdir -p $(SONIC_DPKG_LOCAL_CACHE_DIR) && chmod 777 $(SONIC_DPKG_LOCAL_CACHE_DIR) )
 $(shell test -w $(SONIC_DPKG_CACHE_DIR) || sudo chmod 777 $(SONIC_DPKG_CACHE_DIR) )
