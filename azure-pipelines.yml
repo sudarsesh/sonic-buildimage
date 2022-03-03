@@ -41,6 +41,6 @@ stages:
   jobs:
   - template: .azure-pipelines/azure-pipelines-build.yml
     parameters:
-      buildOptions: 'USERNAME=admin SONIC_BUILD_JOBS=$(nproc) ${{ variables.VERSION_CONTROL_OPTIONS }} SONIC_DPKG_CACHE_METHOD=$(CACHE_MODE)'
+      buildOptions: 'USERNAME=admin SONIC_BUILD_JOBS=$(nproc) ${{ variables.VERSION_CONTROL_OPTIONS }}'
       jobGroups:
       - name: broadcom        
